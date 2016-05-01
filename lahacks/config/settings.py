@@ -25,7 +25,7 @@ SECRET_KEY = '(pmndj1&fgk6i)qrp24b9l-c$b+dahq7#s2ijlne18opnoj!@o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['http://swingbyapp.azurewebsites.net/', '*']
+ALLOWED_HOSTS = ['.azurewebsites.net/', '*']
 
 
 # Application definition
