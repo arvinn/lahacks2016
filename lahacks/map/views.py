@@ -151,23 +151,8 @@ def api(request):
     max_detour_time = int(request.GET.get("max_detour_time", 10))
 
 
-    num_miles = distance(ucla, hollywood)
-
-    if num_miles > 10:
-        return JsonResponse({'status': 'ERROR: distance limit exceeded', 'places':[]},
-                json_dumps_params={'indent':'  '})
 
 
-    centers = get_n_points_in_between(int(num_miles), ucla, hollywood)
-
-
-    results = {}
-    for center in centers:
-        businesses = yelp_search(ucla[0], ucla[1], category)['businesses']
-        for biz in businesses:
-            results[biz['id']] = biz
-
-    places = list(map(lambda x: x[1], results.items()))
 
     original_directions = google_direction_search_no_waypoints(origin, destination)
     route = original_directions['routes']
@@ -179,6 +164,37 @@ def api(request):
             d_step = step['duration']['text']
             (n, mins) = d_step.split()
             og_duration += int(n)
+
+
+
+
+    from pprint import pprint
+    #pprint(original_directions['routes'][0]['legs'][0]['start_location']['lat])
+    start_lat = original_directions['routes'][0]['legs'][0]['start_location']['lat']
+    start_lng = original_directions['routes'][0]['legs'][0]['start_location']['lng']
+    end_lat = original_directions['routes'][0]['legs'][0]['end_location']['lat']
+    end_lng = original_directions['routes'][0]['legs'][0]['end_location']['lng']
+
+
+    num_miles = distance((start_lat, start_lng), (end_lat, end_lng))
+
+    if num_miles > 10:
+        return JsonResponse({'status': 'ERROR: distance limit exceeded', 'places':[]},
+                json_dumps_params={'indent':'  '})
+
+    centers = get_n_points_in_between(int(num_miles), (start_lat, start_lng), (end_lat, end_lng))
+
+
+
+
+    results = {}
+    for center in centers:
+        print(center)
+        businesses = yelp_search(center[0], center[1], category)['businesses']
+        for biz in businesses:
+            results[biz['id']] = biz
+
+    places = list(map(lambda x: x[1], results.items()))
 
     print(len(places))
     for place in places:
