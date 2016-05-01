@@ -110,6 +110,7 @@ $(document).ready(function(){
   $('#sub').click(function(){ 
     var flag = 0;
 
+    // $('.yelp-content-wrapper').html() = '';
     if($('#cat :selected').text() == "Select A Category..."){
       flag = 1;
       $('.error-cat p').css("visibility", "visible");
@@ -124,14 +125,82 @@ $(document).ready(function(){
       queryMsg.category = $('#cat :selected').text();
       queryMsg.max_detour_time = $('#max :selected').text();
     }
+
+
+    var json_string = JSON.stringify({
+      "mobile_url": "http://m.yelp.com/biz/pieology-pizzeria-los-angeles-6?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=0QiihV7dWxCqnf-PgZy8ww",
+      "is_claimed": true,
+      "rating": 4.0,
+      "rating_img_url_large": "https://s3-media2.fl.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+      "review_count": 76,
+      "snippet_text": "I can finally have the time to rate this joint! I will give this resto more than 5 stars, their unlimited toppings, and wallet friendly. I love to eat and...",
+      "phone": "3102080901",
+      "display_phone": "+1-310-208-0901",
+      "id": "pieology-pizzeria-los-angeles-6",
+      "distance": 1178.7929179543391,
+      "rating_img_url": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+      "snippet_image_url": "http://s3-media1.fl.yelpcdn.com/photo/21FmxUFMYUH3SKUwlVKN_A/ms.jpg",
+      "is_closed": false,
+      "name": "Pieology Pizzeria",
+      "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Gwzd5fHvaa9xcHw6M67fqQ/ms.jpg",
+      "rating_img_url_small": "https://s3-media4.fl.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+      "url": "http://www.yelp.com/biz/pieology-pizzeria-los-angeles-6?utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=0QiihV7dWxCqnf-PgZy8ww",
+      "location": {
+        "address": [
+          "920 Broxton Ave"
+        ],
+        "country_code": "US",
+        "city": "Los Angeles",
+        "display_address": [
+          "920 Broxton Ave",
+          "UCLA",
+          "Los Angeles, CA 90024"
+        ],
+        "coordinate": {
+          "latitude": 34.0629653930664,
+          "longitude": -118.446746826172
+        },
+        "state_code": "CA",
+        "neighborhoods": [
+          "UCLA",
+          "Westwood"
+        ],
+        "postal_code": "90024",
+        "geo_accuracy": 8.0
+      },
+      "categories": [
+        [
+          "Pizza",
+          "pizza"
+        ]
+      ]
+    })
+    var obj_yelp = jQuery.parseJSON(json_string);
+    // $('.container').after('<hr>');
+    // $('.container').after('<div class="yelp-content-wrapper"></div>');
+    // $('.yelp-content-wrapper').css({"margin":"auto","width":"50%"});
+
+    var template = '<hr><div class="wrapmiddle" style="margin-bottom:50px">'+
+                  '<div class="left col-xs-2"><img src="{{image_url}}"></div>'+
+                  '<div class="middle col-xs-6"><a href="{{url}}" id="name" style="font-size:20px">{{name}}</a><p></p><img src="{{rating_img_url_large}}"></div>'+
+                  '<div class="right col-xs-4"><p style="font-size:16px">{{#location.neighborhoods}}{{.}}, {{/location.neighborhoods}}</p><p style="font-size:16px">{{location.address}}<br>{{location.city}}, {{location.state_code}} {{location.postal_code}}<br>{{display_phone}}</p>'+
+                  '</div><hr>';
+    $('.wrapmiddle .middle #name').css({"font-size":"30px"});
+    var html = Mustache.to_html(template, obj_yelp);
+    $('.yelp-content-wrapper').html(html);
+
+
+    
+
+   
+
+
+
+
+
+
+
+
   });
-
-
-
-
-
-
-
-
 });
 
