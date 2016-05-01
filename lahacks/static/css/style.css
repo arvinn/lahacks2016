@@ -14,7 +14,6 @@ html, body {
   width: 70%;
   margin:auto;
   font-size: 30px;
-  height: 130px;
 }
 
 .error-cat p{
@@ -68,22 +67,4 @@ html, body {
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
-}
-
-.yelp-contet-wrapper{
-  margin: auto;
-  width: 50%;
-}
-
-.wrapmiddle{
-  padding-bottom: 50px;
-}
-.middle{
-
-}
-.left{
- 
-}
-.right{
-
 }
