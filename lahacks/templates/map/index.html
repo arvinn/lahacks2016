@@ -4,17 +4,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html, charset=utf-8, initial-scale=1.0, user-scalable=no" name="viewport" />
-    <title>Places Searchbox</title>
+    <title>Swingby</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+    <link rel="stylesheet" href="{% static 'css/header-basic.css' %}">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/footer-basic-centered.css' %}">
+
 
 </head>
-  </head>
   <body>
-
+    <header class="header-basic">
+      <header class="header-limiter">
+        <img src="static/img/logo.png">
+        <nav>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </nav>
+      </header>
+    </header>
     <input id="origin-input" class="controls" type="text"
         placeholder="Enter an origin location">
 
@@ -34,13 +46,15 @@
     <div id="map"></div> 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-HGMKHXda6TUmkWfuXMje8eJ_YG6styY&libraries=places&callback=initMap"
         async defer></script>
+    <div class="container">
     <div class="parameters">
       <div class="dropdown-cat col-xs-3 col-xs-offset-2">
         
         <select class="form-control" id="cat">
           <option>Select A Category...</option>
-          <option>Restaurants</option>
-          <option>Coffee Shops</option>
+          <option value = "restaurants">Restaurants</option>
+          <option value = "coffee">Coffee Shops</option>
+          <option value = "sushi">Sushi Bars</option>
         </select>
         <div class="error-cat">
           <p>Please select a category</p>
@@ -63,8 +77,29 @@
       <div class="btn-submit col-xs-2">
         <button class="btn btn-success btn-block" id="sub" type="button">Submit</button>
       </div>
+      <div class="col-xs-2">
+      </div>
     </div>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <div class="yelp-content-wrapper">
+
+    </div>
+
+    <footer class="footer-basic-centered">
+
+      <p class="footer-company-motto">Just swing by!</p>
+
+      <p class="footer-links">
+        <a href="#">Home</a>
+        ·
+        <a href="#">About</a>
+        ·
+        <a href="#">Contact</a>
+      </p>
+
+      <p class="footer-company-name">Swingby &copy; 2016</p>
+
+    </footer>
   </body>
 </html>
 

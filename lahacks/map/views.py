@@ -180,7 +180,7 @@ def api(request):
             (n, mins) = d_step.split()
             og_duration += int(n)
 
-
+    print(len(places))
     for place in places:
         lat = place['location']['coordinate']['latitude']
         lng = place['location']['coordinate']['longitude']
