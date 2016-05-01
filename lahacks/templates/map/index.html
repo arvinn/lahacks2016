@@ -3,13 +3,102 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>title</title>
+    <meta http-equiv="content-type" content="text/html, charset=utf-8, initial-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Places Searchbox</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
   </head>
   <body>
-    <p>hello</p>
-		
+
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
+
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+    </div>
+
+    <div id="map"></div> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-HGMKHXda6TUmkWfuXMje8eJ_YG6styY&libraries=places&callback=initMap"
+        async defer></script>
+    <div class="parameters">
+      <div class="dropdown-cat col-xs-3 col-xs-offset-2">
+        
+        <select class="form-control" id="cat">
+          <option>Select A Category...</option>
+          <option>Restaurants</option>
+          <option>Coffee Shops</option>
+        </select>
+        <div class="error-cat">
+          <p>Please select a category</p>
+        </div>
+      </div>
+
+      <div class="dropdown-max col-xs-3">
+        
+        <select class="form-control" id="max">
+          <option>Select A Maximum Detour Time...</option>
+          <option value = "5">5 Minutes</option>
+          <option value = "10">10 Minutes</option>
+          <option value = "15">15 Minutes</option>
+          <option value = "20">20 Minutes</option>
+        </select>
+        <div class="error-max">
+          <p>Please select a maximum detour time</p>
+        </div>
+      </div>
+      <div class="btn-submit col-xs-2">
+        <button class="btn btn-success btn-block" id="sub" type="button">Submit</button>
+      </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-HGMKHXda6TUmkWfuXMje8eJ_YG6styY&callback=initMap"
+    async defer></script>
+  </body>
+</html> -->
