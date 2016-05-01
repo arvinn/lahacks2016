@@ -1,0 +1,9 @@
+
+SECRET_KEY = 'm8bc!&^$my@bp!u)6y-8mp%at#&^a(=c4vm%pzoct5748sjgekr^42_-ot06'
+SERVER_GOOGLE_MAP_KEY = "AIzaSyDFUOCaKz5hij9sifuXeZX0gaXl_Ikdas4"
+
+
+YELP_CONSUMER_KEY = "0QiihV7dWxCqnf-PgZy8ww"
+YELP_CONSUMER_SECRET = "bMJgrbuR4G20U5m_dFNRt_FbQjU"
+YELP_TOKEN = "20endd9QALfpPERBLJRLLZMqPUNlUcQ8"
+YELP_TOKEN_SECRET  = "oWpb_qXveHjh0XOyfwlJx7OoZNo"
