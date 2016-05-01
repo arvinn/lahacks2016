@@ -1,6 +1,6 @@
 
 SECRET_KEY = 'm8bc!&^$my@bp!u)6y-8mp%at#&^a(=c4vm%pzoct5748sjgekr^42_-ot06'
-SERVER_GOOGLE_MAP_KEY = "AIzaSyDFUOCaKz5hij9sifuXeZX0gaXl_Ikdas4"
+SERVER_GOOGLE_MAP_KEY = "AIzaSyC-HGMKHXda6TUmkWfuXMje8eJ_YG6styY"
 
 
 YELP_CONSUMER_KEY = "0QiihV7dWxCqnf-PgZy8ww"

@@ -156,6 +156,8 @@ def api(request):
 
     original_directions = google_direction_search_no_waypoints(origin, destination)
     route = original_directions['routes']
+    #print("=========")
+    #print(original_directions)   # TEST for google api limit reached
     route = route[0]
     legs = route['legs']
     og_duration = 0
@@ -223,7 +225,7 @@ def api(request):
        # print(place['name'])
        #print(json.dumps(directions, indent=2))
 
-    places = list(filter(lambda x: x['duration'] < 5, places))
+    places = list(filter(lambda x: x['duration'] < max_detour_time, places))
 
 
 
